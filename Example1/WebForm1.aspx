@@ -24,7 +24,7 @@
             <asp:CommandField ShowDeleteButton="True" ShowSelectButton="True" />
         </Columns>
     </asp:GridView>
-
+    <asp:TextBox ID="tb" runat="server" />
     <asp:FormView ID="FormView1" runat="server" DefaultMode="Insert" DataSourceID="ObjectDataSource1" DataKeyNames="Id">
         <EditItemTemplate>
             Id:

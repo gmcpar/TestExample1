@@ -39,7 +39,8 @@ public class SqlDB
 
                     foreach (SqlParameter p in sqlCommand.Parameters)
                     {
-                        if (paramList.TryGetValue(p.ParameterName.Replace("@", ""), out object paramValue))
+                        object paramValue;
+                        if (paramList.TryGetValue(p.ParameterName.Replace("@", ""), out paramValue))
                             p.Value = paramValue;
                     }
                 }
