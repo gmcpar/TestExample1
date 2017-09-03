@@ -18,7 +18,7 @@ public partial class WebForm1 {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+    protected global::DataManager.CustomDataSource ObjectDataSource1;
     
     /// <summary>
     /// GridView1 control.
@@ -28,6 +28,15 @@ public partial class WebForm1 {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.GridView GridView1;
+    
+    /// <summary>
+    /// valSummary control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.ValidationSummary valSummary;
     
     /// <summary>
     /// FormView1 control.

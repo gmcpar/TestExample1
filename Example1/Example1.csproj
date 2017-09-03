@@ -69,6 +69,8 @@
     <Content Include="packages.config" />
     <Content Include="Site1.Master" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="scripts\jquery-1.4.1" />
+    <Content Include="scripts\jquery-1.4.1.min" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -82,7 +84,22 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
+    <Compile Include="DataItems\Customer.cs" />
+    <Compile Include="DataManager\CustomDataSource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataManager\DataStore.cs" />
+    <Compile Include="DataManager\Extensions.cs" />
+    <Compile Include="DataManager\IDataStoreItem.cs" />
+    <Compile Include="DataManager\SqlDB.cs" />
+    <Compile Include="DataManager\Validation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ErrorResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
@@ -100,12 +117,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MSSQLDB\MSSQLDB\SQLDB.csproj">
-      <Project>{ae0693fc-3d97-41e5-a4b3-21a78366d9f2}</Project>
-      <Name>SQLDB</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="ErrorResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

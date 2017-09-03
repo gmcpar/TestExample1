@@ -1,6 +1,13 @@
-﻿public class Customer : IDataStoreItem
+﻿using System.ComponentModel.DataAnnotations;
+
+public class Customer : IDataStoreItem
 {
+    [Required()]
+    [Range(55,int.MaxValue)]
     public int Id { get; set; }
+
+    [Required()]
+    [MaxLength(50, ErrorMessageResourceName="StringLength", ErrorMessageResourceType =typeof(Example1.ErrorResources))]
     public string Name { get; set; }
     public string Email { get; set; }
     public string Telephone { get; set; }

@@ -1,22 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebForm1" %>
+<%@ Register TagPrefix="cv" Namespace="DataManager" Assembly="Example1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"
-        SelectMethod="SelectAll" InsertMethod="Insert"
-        DeleteMethod="Delete" UpdateMethod="Update">
-        <InsertParameters>
-            <asp:Parameter Type="Object" Name="item" />
-        </InsertParameters>
-        <UpdateParameters>
-            <asp:Parameter Type="Object" Name="item" />
-        </UpdateParameters>
-        <DeleteParameters>
-            <asp:Parameter Type="Object" Name="item" />
-        </DeleteParameters>
-    </asp:ObjectDataSource>
+    <cv:CustomDataSource ID="ObjectDataSource1" runat="server"
+         DataObjectTypeName="Customer" SelectMethod="SelectAll">
+    </cv:CustomDataSource>
 
     <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource1" DataKeyNames="Id">
         <Columns>
@@ -24,6 +15,8 @@
             <asp:CommandField ShowDeleteButton="True" ShowSelectButton="True" />
         </Columns>
     </asp:GridView>
+
+    <asp:ValidationSummary ID="valSummary" runat="server" />
 
     <asp:FormView ID="FormView1" runat="server" DefaultMode="Insert" DataSourceID="ObjectDataSource1" DataKeyNames="Id">
         <EditItemTemplate>
@@ -45,10 +38,14 @@
         <InsertItemTemplate>
             Id:
             <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
+            <cv:AnnotationValidator ID="idval" runat="server" ControlToValidate="IdTextBox" 
+                PropertyName="Id" SourceType="Customer" Text="*" />
             <br />
             Name:
             <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
-            <br />
+            <cv:AnnotationValidator ID="custval" runat="server" ControlToValidate="NameTextBox" 
+                PropertyName="Name" SourceType="Customer" Text="*" />
+            <br />       
             Email:
             <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
             <br />
@@ -73,4 +70,5 @@
             <br />
         </ItemTemplate>
     </asp:FormView>
+    
 </asp:Content>
