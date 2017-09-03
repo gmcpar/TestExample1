@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 
@@ -11,7 +12,12 @@ namespace DataManager
 
         public DataStore()
         {
-            db = new SqlDB(Config.ConnectionString);// ConfigurationManager.ConnectionStrings["DataStoreConnectionString"].ConnectionString);
+            if (string.IsNullOrEmpty(Config.ConnectionString.Trim()))
+            {
+                throw new Exception("A valid connection string must exist in the <connectionStrings> configuration section for the application.");
+            }
+
+            db = new SqlDB(Config.ConnectionString);
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, true)]

@@ -9,7 +9,8 @@
          DataObjectTypeName="Customer" SelectMethod="SelectAll">
     </cv:CustomDataSource>
 
-    <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource1" DataKeyNames="Id">
+    <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource1" DataKeyNames="Id" 
+        AllowSorting="true" AllowPaging="true" PageSize="3">
         <Columns>
             <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
             <asp:CommandField ShowDeleteButton="True" ShowSelectButton="True" />

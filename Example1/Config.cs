@@ -6,7 +6,7 @@ public class Config
     {
         get
         {
-            return ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["DataStoreConnectionString"].ConnectionString;
         }
     }
 }
