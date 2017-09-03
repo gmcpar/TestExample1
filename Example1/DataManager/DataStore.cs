@@ -11,7 +11,7 @@ namespace DataManager
 
         public DataStore()
         {
-            db = new SqlDB(ConfigurationManager.ConnectionStrings["DataStoreConnectionString"].ConnectionString);
+            db = new SqlDB(Config.ConnectionString);// ConfigurationManager.ConnectionStrings["DataStoreConnectionString"].ConnectionString);
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, true)]
