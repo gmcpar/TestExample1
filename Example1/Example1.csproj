@@ -84,6 +84,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annotations\CustomTestAttribute.cs" />
     <Compile Include="DataItems\Customer.cs" />
     <Compile Include="DataManager\CustomDataSource.cs">
       <SubType>Code</SubType>

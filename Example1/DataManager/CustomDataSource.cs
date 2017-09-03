@@ -21,6 +21,7 @@ namespace DataManager
             DeleteMethod = "Delete";
             UpdateMethod = "Update";
             InsertMethod = "Insert";
+            SelectCountMethod = "SelectCount";
         }
 
         private void SetObjectParameters()

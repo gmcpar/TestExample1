@@ -7,7 +7,7 @@ public class Customer : IDataStoreItem
     public int Id { get; set; }
 
     [Required()]
-    [MaxLength(50, ErrorMessageResourceName="StringLength", ErrorMessageResourceType =typeof(Example1.ErrorResources))]
+    [MaxLength(50, ErrorMessageResourceName="StringLength", ErrorMessageResourceType = typeof(Example1.ErrorResources))]
     public string Name { get; set; }
     public string Email { get; set; }
     public string Telephone { get; set; }

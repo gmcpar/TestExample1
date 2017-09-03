@@ -20,7 +20,7 @@ namespace DataManager
             return db.GetItem<T>(new T().SelectProcedureName);
         }
 
-        [DataObjectMethod(DataObjectMethodType.Select, true)]
+        [DataObjectMethod(DataObjectMethodType.Fill, true)]
         public IEnumerable<T> SelectAll()
         {
             return db.GetList<T>(new T().SelectAllProcedureName);
@@ -38,6 +38,11 @@ namespace DataManager
             db.ExecuteSP(item.UpdateProcedureName, item);
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select, true)]
+        public int SelectCount()
+        {
+            return db.GetValue<int>(new T().SelectCountProcedureName);
+        }
         [DataObjectMethod(DataObjectMethodType.Delete, true)]
         public void Delete(T item)
         {
