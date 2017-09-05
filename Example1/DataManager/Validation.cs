@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Linq;
 
-
 namespace DataManager
 {
     public class AnnotationValidator : BaseValidator
@@ -20,13 +19,16 @@ namespace DataManager
 
             var control = FindControl(ControlToValidate);
 
-            foreach (ValidationAttribute attr in props.GetCustomAttributes())
+            foreach (ValidationAttribute valAttribute in props.GetCustomAttributes())
             {
-                if (!attr.IsValid(GetValue(control)))
+                string inputValue = GetValue(control);
+
+                if (!valAttribute.IsValid(inputValue))
                 {
-                    DisplayNameAttribute dna = props.GetCustomAttributes(typeof(DisplayNameAttribute), true).OfType<DisplayNameAttribute>().FirstOrDefault();
-                    string err = (dna != null) ? dna.DisplayName : props.Name;
-                    ErrorMessage = attr.FormatErrorMessage(err);
+                    DisplayNameAttribute dna = 
+                        props.GetCustomAttributes(typeof(DisplayNameAttribute), true).OfType<DisplayNameAttribute>().FirstOrDefault();
+                    string displayname = (dna != null) ? dna.DisplayName : props.Name;
+                    ErrorMessage = valAttribute.FormatErrorMessage(displayname);
                     return false;
                 }
             }
@@ -35,6 +37,7 @@ namespace DataManager
 
         private string GetValue(Control c)
         {
+
             if(c is TextBox) return (c as TextBox).Text;
             if(c is DropDownList) return (c as DropDownList).Text;
             if(c is CheckBox) return (c as CheckBox).Text;

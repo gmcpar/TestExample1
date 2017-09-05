@@ -49,6 +49,8 @@
             <br />       
             Email:
             <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
+            <cv:AnnotationValidator ID="emailVal" runat="server" ControlToValidate="EmailTextBox"
+                 PropertyName="Email" SourceType="Customer" Text="*" />
             <br />
             Telephone:
             <asp:TextBox ID="TelephoneTextBox" runat="server" Text='<%# Bind("Telephone") %>' />

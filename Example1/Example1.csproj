@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Annotations\CustomTestAttribute.cs" />
+    <Compile Include="Annotations\NullableAttributes.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="DataItems\Customer.cs" />
     <Compile Include="DataManager\CustomDataSource.cs">
