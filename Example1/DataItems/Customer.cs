@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-public class Customer : IDataStoreItem
+partial class Customer : IDataStoreItem
 {
     [Required()]
     [Range(55,int.MaxValue)]
