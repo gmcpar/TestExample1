@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Linq;
 
-namespace DataManager
+namespace DataStore
 {
     public class AnnotationValidator : BaseValidator
     {

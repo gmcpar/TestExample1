@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.UI.WebControls;
 
-namespace DataManager
+namespace DataStore
 {
     public class CustomDataSource : ObjectDataSource
     {

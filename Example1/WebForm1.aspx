@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebForm1" %>
-<%@ Register TagPrefix="cv" Namespace="DataManager" Assembly="Example1" %>
+<%@ Register TagPrefix="cv" Namespace="DataStore" Assembly="Example1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 
@@ -9,8 +9,8 @@
          DataObjectTypeName="Customer" SelectMethod="SelectAll">
     </cv:CustomDataSource>
 
-    <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource1" DataKeyNames="Id" 
-        AllowSorting="true" AllowPaging="true" PageSize="3">
+    <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource1" 
+         DataKeyNames="Id" AllowSorting="true" AllowPaging="true" PageSize="3">
         <Columns>
             <asp:CommandField ShowEditButton="True" ShowSelectButton="True" />
             <asp:CommandField ShowDeleteButton="True" ShowSelectButton="True" />
@@ -20,6 +20,7 @@
     <asp:ValidationSummary ID="valSummary" runat="server" />
 
     <asp:FormView ID="FormView1" runat="server" DefaultMode="Insert" DataSourceID="ObjectDataSource1" DataKeyNames="Id">
+
         <EditItemTemplate>
             Id:
             <asp:Label ID="IdLabel1" runat="server" Text='<%# Eval("Id") %>' />
@@ -36,6 +37,7 @@
             <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
             &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
         </EditItemTemplate>
+
         <InsertItemTemplate>
             Id:
             <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
@@ -58,6 +60,7 @@
             <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
             &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
         </InsertItemTemplate>
+
         <ItemTemplate>
             Id:
             <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
@@ -72,6 +75,7 @@
             <asp:Label ID="TelephoneLabel" runat="server" Text='<%# Bind("Telephone") %>' />
             <br />
         </ItemTemplate>
+
     </asp:FormView>
-    
+
 </asp:Content>

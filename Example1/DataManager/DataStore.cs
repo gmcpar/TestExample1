@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 
-namespace DataManager
+namespace DataStore
 {
     [DataObject(true)]
     public class DataStore<T> where T : IDataStoreItem, new()
@@ -12,12 +12,14 @@ namespace DataManager
 
         public DataStore()
         {
-            if (string.IsNullOrEmpty(Config.ConnectionString.Trim()))
+            string connectionString = ConfigurationManager.ConnectionStrings["DataStoreConnectionString"].ConnectionString;
+
+            if (string.IsNullOrEmpty(connectionString))
             {
-                throw new Exception("A valid connection string must exist in the <connectionStrings> configuration section for the application.");
+                throw new Exception("A valid connection string with the name 'DataStoreConnectionString' must exist in the <connectionStrings> configuration section for the application.");
             }
 
-            db = new SqlDB(Config.ConnectionString);
+            db = new SqlDB(connectionString);
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, true)]

@@ -18,7 +18,7 @@ public partial class WebForm1 {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::DataManager.CustomDataSource ObjectDataSource1;
+    protected global::DataStore.CustomDataSource ObjectDataSource1;
     
     /// <summary>
     /// GridView1 control.
