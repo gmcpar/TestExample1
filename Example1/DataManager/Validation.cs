@@ -19,7 +19,7 @@ namespace DataManager
 
             var control = FindControl(ControlToValidate);
 
-            foreach (ValidationAttribute valAttribute in props.GetCustomAttributes())
+            foreach (ValidationAttribute valAttribute in props.GetCustomAttributes<ValidationAttribute>())
             {
                 string inputValue = GetValue(control);
 

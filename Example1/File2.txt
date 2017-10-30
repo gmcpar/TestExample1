@@ -1,0 +1,6 @@
+						create procedure TestDB1_Delete
+							@Id int
+							@Name nchar
+							@Email nchar
+							@Telephone nchar
+						This is file 2

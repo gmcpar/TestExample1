@@ -1,0 +1,48 @@
+﻿<#@ output extension="SQL" #>
+<#@ assembly name="Microsoft.SqlServer.ConnectionInfo" #>
+<#@ assembly name="Microsoft.SqlServer.Smo" #>
+<#@ import namespace="Microsoft.SqlServer.Management.Smo" #>
+<#@ include file="Test1.tt" #>
+<#
+    Server server = new Server("DESKTOP-P25B241");
+    Database database = new Database(server, "db1");
+    Table table = new Table(database, "TestDB1");
+    table.Refresh();
+#>
+
+<#
+    GenerateFile1();
+    SaveOutput("File1.txt");  
+	PushIndent("\t\t\t\t\t\t");
+#>
+create procedure <#= table.Name #>_Delete
+<#
+    PushIndent("\t");
+    foreach (Column column in table.Columns)
+    {
+       // if (column.InPrimaryKey)
+            WriteLine("@" + column.Name + " " + column.DataType.Name);
+    }
+    PopIndent();
+#>
+<#
+    GenerateFile2();
+    SaveOutput("File2.txt");
+#>
+
+
+<#+
+    void GenerateFile1()
+    {
+#>
+This is file 1
+<#+
+    }  
+
+    void GenerateFile2()
+    {
+#>
+This is file 2
+<#+
+    }
+#>

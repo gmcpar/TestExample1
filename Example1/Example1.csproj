@@ -47,6 +47,15 @@
     <Reference Include="DataAnnotationsExtensions, Version=5.0.1.20, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DataAnnotationsExtensions.5.0.1.20\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte100, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -71,6 +80,28 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Site1.Master" />
+    <Content Include="Test1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Test1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Test2.SQL">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Test2.tt</DependentUpon>
+    </Content>
+    <Content Include="Test2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Test2.SQL</LastGenOutput>
+    </Content>
+    <Content Include="Test3.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Test3.txt</LastGenOutput>
+    </Content>
+    <Content Include="Test3.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Test3.tt</DependentUpon>
+    </Content>
     <Content Include="WebForm1.aspx" />
     <Content Include="scripts\jquery-1.4.1" />
     <Content Include="scripts\jquery-1.4.1.min" />
@@ -114,6 +145,11 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="Test1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Test1.tt</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -127,6 +163,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -161,9 +200,15 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+       Other similar extension points exist, see Microsoft.Common.targets.-->
+  <UsingTask TaskName="BuildTasks.CreateStoredProceduresTask" AssemblyFile="C:\Users\gerar\OneDrive\Documents\Visual Studio 2017\Projects\BuildTasks\BuildTasks\bin\Debug\BuildTasks.dll"/>
+  <ItemGroup>
+        <ClassFiles Include="$(ProjectDir)DataItems\*.*"/>
+    </ItemGroup>
+  <Target Name="AfterBuild">
+    <CreateStoredProceduresTask ClassFileName="%(ClassFiles.FullPath)" DLLName="$(ProjectDir)$(OutputPath)$(AssemblyName).dll" />
   </Target>
+<!--
   <Target Name="AfterBuild">
   </Target>
   -->

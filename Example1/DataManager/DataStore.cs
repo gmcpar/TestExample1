@@ -11,7 +11,7 @@ namespace DataManager
         private SqlDB db;
 
         public DataStore()
-        {
+        { 
             if (string.IsNullOrEmpty(Config.ConnectionString.Trim()))
             {
                 throw new Exception("A valid connection string must exist in the <connectionStrings> configuration section for the application.");

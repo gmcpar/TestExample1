@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <cv:CustomDataSource ID="ObjectDataSource1" runat="server"
-         DataObjectTypeName="Customer" SelectMethod="SelectAll">
+         DataObjectTypeName="DataItem.Customer" SelectMethod="SelectAll">
     </cv:CustomDataSource>
 
     <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource1" DataKeyNames="Id" 
@@ -40,17 +40,17 @@
             Id:
             <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
             <cv:AnnotationValidator ID="idval" runat="server" ControlToValidate="IdTextBox" 
-                PropertyName="Id" SourceType="Customer" Text="*" />
+                PropertyName="Id" SourceType="DataItem.Customer" Text="*" />
             <br />
             Name:
             <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
             <cv:AnnotationValidator ID="custval" runat="server" ControlToValidate="NameTextBox" 
-                PropertyName="Name" SourceType="Customer" Text="*" />
+                PropertyName="Name" SourceType="DataItem.Customer" Text="*" />
             <br />       
             Email:
             <asp:TextBox ID="EmailTextBox" runat="server" Text='<%# Bind("Email") %>' />
             <cv:AnnotationValidator ID="emailVal" runat="server" ControlToValidate="EmailTextBox"
-                 PropertyName="Email" SourceType="Customer" Text="*" />
+                 PropertyName="Email" SourceType="DataItem.Customer" Text="*" />
             <br />
             Telephone:
             <asp:TextBox ID="TelephoneTextBox" runat="server" Text='<%# Bind("Telephone") %>' />
