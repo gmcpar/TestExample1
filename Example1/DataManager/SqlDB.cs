@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
 
-namespace DataManager
+namespace DataStore
 {
     public class SqlDB
     {
@@ -249,6 +249,13 @@ namespace DataManager
             }
         }
 
+        /// <summary>
+        /// Creates an item of generic type T from a single DataRow 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="row"></param>
+        /// <param name="properties"></param>
+        /// <returns></returns>
         public T CreateItem<T>(DataRow row, IList<PropertyInfo> properties) where T : new()
         {
             T item = new T();
